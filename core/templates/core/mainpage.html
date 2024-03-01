@@ -1,0 +1,44 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<section class="vh-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <h3 class="mb-5">Кіру парақшасы</h3>
+
+              <a target="_blank" class="scan" href="{% url 'login' %}">
+                <input type="submit" class="profile-edit-btn m-2"
+                name="btnAddMore" value="Кіру"/>
+            </a>
+            <a href="{% url 'register' %}">
+                <input type="submit" class="profile-edit-btn m-2 " 
+                       name="btnAddMore" value="Тіркелу"/>
+            </a>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+    $(".scan").click(function () {
+        var postData = { csrfmiddlewaretoken: '{{ csrf_token }}' }
+        $.ajax({
+            url: "{% url 'scan' %}",
+            data: {
+
+            },
+        });
+    });
+</script>
+
+
+{% endblock content %}
